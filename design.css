@@ -1,0 +1,11 @@
+#form1 {
+    background: url("form-fieldset.gif") repeat-x scroll left bottom #DCBEBC;
+    border: 1px solid #DFDCDC;
+    border-radius: 15px 15px 15px 15px;
+    display: inline-block;
+    margin-bottom: 30px;
+    margin-left: 0px;
+    margin-top: 10px;
+    padding: 25px 50px 10px;
+    width: 350px;
+}

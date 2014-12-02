@@ -1,0 +1,89 @@
+​​<!DOCTYPE html>
+<html>
+<head>
+<title> First Webform Page  </title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="design.css">
+<script src="js/jquery-validate.js"></script>
+<script>
+$(document).ready(function () {
+	$('#phone1').blur(function(e) {
+        if (validatePhone('phone1')) {
+            $('#result').html('Valid');
+            $('#result').css('color', 'green');
+        }
+        else {
+            $('#result').html('Invalid');
+            $('#result').css('color', 'red');
+        }
+    });
+	$("#form1").submit(function () {
+		if ($("#Fname").val().trim() === "") {
+			alert("Required FirstName");
+	    $("#Fname").focus();
+	    return false;
+		};
+		if ($("#Lname").val().trim() === "") {
+			alert("Required Last name");
+		$("#Lname").focus();
+		return false;
+		};
+		  var emailval= $("#email").val();
+		  var atpos = emailval.indexOf("@");
+		  var dotpos = emailval.lastIndexOf(".");
+		if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=emailval.length) {
+              alert("Not a valid E-mail address");
+         $("#email").focus();
+         return false;
+    }
+		if ($("#pass").val() === "") {
+			alert("Please Provide Password Here");
+		$("#pass").focus();
+		return false;
+	}
+		if ($('#pass').val().length < 6) {
+			 alert("passowrd should be minimum six digit !");
+		$("#pass").focus();
+		return false; 
+
+		}
+		if ($('#phone1').val() === "") {
+			 alert("Please Provide Phone Number !");
+		$("#phone1").focus();
+		return false; 
+
+		}
+		if ($('#phone1').val().length < 10) {
+			 alert("phone Number should be minimum Ten digit !");
+		$("#phone1").focus();
+		return false; 
+
+		}
+	   
+	});
+});
+function validatePhone(phone1) {
+    var a = document.getElementById(phone1).value;
+    var filter = /^[0-9-+\s+()]+$/;
+    if (filter.test(a)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+</script>
+</head>
+<body>
+	<form id="form1">
+        <div class="label">FirstName</div> <input type="text"  id="Fname" name="FirstName" placeHolder="Please Enter Fname"/><br>
+        <div class="label">LastName</div><input type="text"  id="Lname" name="LastName" placeHolder="Enter your LastName"> <br>
+        <div class="label">Email</div><input type="text" id="email" name="email" /><br />
+        <div class="label">Password</div><input type="password" name="Password" id="pass" />
+        <div class="label">Phone</div><input type="text" name="Phone" id="phone1" placeholder="Enter your Phone Numbere"/>
+        <span id="result"></span>
+        <div style="margin-left:117px"><input type="submit" value="submit" /></div>
+	</form>
+</body>
+</html>
